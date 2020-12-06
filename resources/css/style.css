@@ -1,0 +1,42 @@
+
+body {
+  font-family: 'Nunito';
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  background-color: #DD5F0F;
+  color: #fff;
+}
+
+.current-bet-container {
+  margin: auto;
+}
+
+.current-bet-container .cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #555;
+}
+
+.current-bet-container .card {
+  background-color: #646DDA;
+}
+.current-bet-container .card a {
+  color: #fff;
+}
+
+.bet-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.card {
+  width: 18em;
+  margin-right: 15px;
+  margin-bottom: 20px;
+}
