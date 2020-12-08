@@ -12,9 +12,9 @@ class Meeting extends Model
             'start_date',
             'end_date',
             'cote',
-            'result1',
-            'result2',
             'team1',
-            'team2'
+            'team2',
+            'result1',
+            'result2'
         ];
 }

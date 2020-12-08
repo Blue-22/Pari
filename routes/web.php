@@ -22,10 +22,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Route::get('/meetings', function () {
-//     return view('meeting');
+//     return view('meetings.show');
 // });
 
 // Route::resource('/meetings', 'MeetingController');
 
-Route::get('/meetings', 'App\Http\Controllers\MeetingController@show');
-Route::get('/meeting', 'App\Http\Controllers\MeetingController@create');
+Route::get('/meetings', 'App\Http\Controllers\MeetingController@show')->name('meeting');
+// Route::get('/meetings', 'App\Http\Controllers\MeetingController@create')->name('meeting');
+Route::get('/meetings', 'App\Http\Controllers\MeetingController@edit')->name('meeting');
+// Route::get('/meetings', 'App\Http\Controllers\MeetingController@destroy')->name('meeting');

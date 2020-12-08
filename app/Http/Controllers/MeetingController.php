@@ -54,6 +54,7 @@ class MeetingController extends Controller
             'team2' => $request->get('team2')
         ]);
         $meeting->save();
+
         return redirect('/meetings')->with('success', 'Meeting saved!');
     }
 
@@ -66,6 +67,7 @@ class MeetingController extends Controller
     public function show() // $id
     {
         $meetings = Meeting::all();
+
         return view('meetings.show', compact('meetings'));
     }
 
@@ -78,6 +80,7 @@ class MeetingController extends Controller
     public function edit($id)
     {
         $meeting = Meeting::find($id);
+
         return view('meetings.edit', compact('meeting'));
     }
 

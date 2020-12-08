@@ -16,13 +16,13 @@ class CreateMeetingsTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->id('id');
             $table->timestamps();
-            $table->dateTime('dateStart', 0);
-            $table->dateTime('dateEnd', 0);
+            $table->dateTime('start_date', 0);
+            $table->dateTime('end_date', 0);
             $table->integer('cote');
-            $table->char('result1', '100');
-            $table->char('result2', '100');
-            $table->integer('team1');
-            $table->integer('team2');
+            $table->char('team1', '100');
+            $table->char('team2', '100');
+            $table->integer('result1');
+            $table->integer('result2');
         });
     }
 
