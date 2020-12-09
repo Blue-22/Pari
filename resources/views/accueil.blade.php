@@ -14,10 +14,10 @@
 </head>
 <body class="antialiased">
 
-  <header class="header">
-    <h1>Paris Sportif</h1>
-  </header>
+  @include('fragments/header')
+
   <div class="current-bet-container container">
+    <h3>Vos Paris en cours :</h3>
     <div class="cards-list">
       <div class="card">
         <div class="card-body">
@@ -52,32 +52,35 @@
 
 
   <div class="bet-list container">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Nom Rencontre</h5>
-        <p class="card-text">Description de la rencontre.</p>
-        <a href="#" class="card-link">Détails</a>
+    <h3>Paris disponibles :</h3>
+    <div class="cards-list">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nom Rencontre</h5>
+          <p class="card-text">Description de la rencontre.</p>
+          <a href="#" class="card-link">Détails</a>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Nom Rencontre</h5>
-        <p class="card-text">Description de la rencontre.</p>
-        <a href="#" class="card-link">Détails</a>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nom Rencontre</h5>
+          <p class="card-text">Description de la rencontre.</p>
+          <a href="#" class="card-link">Détails</a>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Nom Rencontre</h5>
-        <p class="card-text">Description de la rencontre.</p>
-        <a href="#" class="card-link">Détails</a>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nom Rencontre</h5>
+          <p class="card-text">Description de la rencontre.</p>
+          <a href="#" class="card-link">Détails</a>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Nom Rencontre</h5>
-        <p class="card-text">Description de la rencontre.</p>
-        <a href="#" class="card-link">Détails</a>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nom Rencontre</h5>
+          <p class="card-text">Description de la rencontre.</p>
+          <a href="#" class="card-link">Détails</a>
+        </div>
       </div>
     </div>
   </div>

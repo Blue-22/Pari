@@ -28,15 +28,71 @@ body {
 .current-bet-container .card a {
   color: #fff;
 }
-
+*
 .bet-list {
+  margin-top: 30px;
+}
+
+.bet-list .cards-list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 30px;
 }
 
 .card {
   width: 18em;
   margin-right: 15px;
   margin-bottom: 20px;
+}
+
+/* Page Pari */
+.general-details {
+  text-align: center;
+}
+.general-details h2{
+  margin-bottom: 20px;
+}
+.pari-array {
+  margin-top: 80px;
+  text-align: center;
+}
+.teams {
+  border: 5px solid #DDA614;
+}
+.team1 {
+  border-right: 5px solid #DDA614;
+}
+.t-header {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.t-header img {
+  height: 150px;
+}
+.t-body {
+  margin-bottom: 20px;
+}
+.t-footer {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.t-footer .btn {
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 10px 0;
+  margin-top: 10px;
+  width: 25%;
+}
+.bet-form {
+  margin-bottom: 100px;
+}
+.scoreBet label {
+  display: block;
+}
+.scoreBet input {
+  width: 45%;
+  display: inline;
 }
