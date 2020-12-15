@@ -26,15 +26,13 @@
             <td>{{$meeting['team1']}}</td>
             <td>{{$meeting['team2']}}</td>
             <td>
-              <a href="{{ route('meetings.edit', $meeting['id']) }}" class="btn btn-primary">Modifier</a>
+                <a href="{{ route('meeting.edit', $meeting['id']) }}" class="btn btn-primary">Modifier</a>
             </td>
-            <td>
-              <form action="{{ route('meetings.destroy', $meeting['id']) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger" type="submit">Supprimer</button>
-              </form>
-            </td>
+             <td>
+              <form action="{{ route('meeting.destroy', $meeting['id']) }}" method="get">
+                <button>Supprimer</button>
+              </form>
+            </td>
         </tr>
         @endforeach
     </tbody>

@@ -77,11 +77,10 @@ class MeetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Meeting $meeting) // $id
     {
-        $meeting = Meeting::find($id);
-
-        return view('meetings.edit', compact('meeting'));
+       // $meeting = Meeting::find($id);
+        return view('meeting.edit', compact('meeting'));
     }
 
     /**
@@ -91,7 +90,7 @@ class MeetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request) // , Meeting $meeting
     {
         $request->validate([
             'start_date'=>'required',
@@ -102,6 +101,8 @@ class MeetingController extends Controller
             'team1'=>'required',
             'team2'=>'required',
         ]);
+
+       //  $meeting->update($request->all());
 
         $meeting = Meeting::find($id);
         $meeting->start_date =  $request->get('start_date');
