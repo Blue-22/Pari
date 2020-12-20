@@ -5,8 +5,7 @@
     <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Date de début</th>
-            <th scope="col">Date de fin</th>
+            <th scope="col">Date</th>
             <th scope="col">La cote</th>
             <th scope="col">Résultat équipe 1</th>
             <th scope="col">Résultat équipe 2</th>
@@ -20,7 +19,6 @@
         <th scope="row"></th>
             <td>{{$meeting['id']}}</td>
             <td>{{$meeting['start_date']}}</td>
-            <td>{{$meeting['end_date']}}</td>
             <td>{{$meeting['cote']}}</td>
             <td>{{$meeting['result1']}}</td>
             <td>{{$meeting['result2']}}</td>

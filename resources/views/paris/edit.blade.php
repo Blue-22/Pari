@@ -1,51 +1,91 @@
-<div class="row">
-    <div class="col-sm-8 offset-sm-2">
-        <h1 class="display-3">Mise à jour du pari</h1>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+</head>
+<body class="antialiased">
+
+@include('fragments/header')
+
+<div class="general-details container">
+    <h2>{{ $meeting['team1'] }} - {{ $meeting['team2'] }}</h2>
+    <h4><span class="badge badge-success">Date de la rencontre : {{ $meeting['meeting_date'] }}</span></h4>
+</div>
+
+<div class="container pari-array">
+    <div class="teams row">
+        <div class="col-6 team1">
+            <div class="t-header">
+                <img src="https://fr.global.nba.com/media/img/teams/00/logos/MEM_logo.png" alt="">
+                <h4>{{ $meeting['team1'] }}</h4>
+            </div>
+            <div class="t-body">
+                <h3>Côte : 1,70</h3>
+            </div>
         </div>
-        <br />
-        @endif
-        <form method="post" action="/pari/update/{{$pari['id']}}">
-            @csrf
-            <div class="form-group">
-
-                <label for="BetSum">Somme à parier :</label>
-                <input type="text" class="form-control" name="BetSum" value={{ $pari['BetSum'] }} />
+        <div class="col-6 team2">
+            <div class="t-header">
+                <img src="https://fr.global.nba.com/media/img/teams/00/logos/MIA_logo.png" alt="">
+                <h4>{{ $meeting['team2'] }}</h4>
             </div>
-
-            <div class="form-group">
-                <label for="BetOn">Choix du vainqueur :</label>
-                <input type="text" class="form-control" name="BetOn" value={{ $pari['BetOn'] }} />
+            <div class="t-body">
+                <h3>Côte : 4,40</h3>
             </div>
-
-            <div class="form-group">
-                <label for="cote">Cote:</label>
-                <input type="text" class="form-control" name="cote" value={{ $meeting['cote'] }} />
-            </div>
-            <div class="form-group">
-                <label for="result1">Résultat équipe 1:</label>
-                <input type="text" class="form-control" name="result1" value={{ $meeting['result1'] }} />
-            </div>
-            <div class="form-group">
-                <label for="result2">Résultat équipe 2:</label>
-                <input type="text" class="form-control" name="result2" value={{ $meeting['result2'] }} />
-            </div>
-            <div class="form-group">
-                <label for="team1">Equipe 1:</label>
-                <input type="text" class="form-control" name="team1" value={{ $meeting['team1'] }} />
-            </div>
-            <div class="form-group">
-                <label for="team2">Equipe 2:</label>
-                <input type="text" class="form-control" name="team2" value={{ $meeting['team2'] }} />
-            </div>
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+        </div>
+    </div>
+    <div class="row t-footer">
     </div>
 </div>
+<div class="container">
+    <form class="bet-form" method="post" action="/pari/update/{{$pari['id']}}">
+        {{ csrf_field() }}
+        {{--donne la bonne rencontre TODO:donner la bonne valeur--}}
+        <input type="hidden" name="meetingId" value="{{ $meeting['id'] }}">
+        <input type="hidden" name="userId" value="{{ $user }}">
+        <div class="form-row justify-content-around">
+            <div class="form-group col-md-3">
+                <label for="inputSum">Somme à parier</label>
+                <input type="number" class="form-control" name="BetSum" id="inputSum" required value="{{ $pari['BetSum'] }}">
+            </div>
+            <div class="form-group col-md-4">
+                <label style="display:block;">Choix pari :</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BetOn" value="{{ $meeting['team1'] }}" id="1" required {{ ($pari['BetOn'] == $meeting['team1']) ? "checked" : "" }}>
+                    <label class="form-check-label" for="team1">{{ $meeting['team1'] }}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BetOn" value="{{ $meeting['team2'] }}" id="2" required {{ ($pari['BetOn'] == $meeting['team2']) ? "checked" : "" }}>
+                    <label class="form-check-label" for="team2">{{ $meeting['team2'] }}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="BetOn" value="none" id="3" required {{ ($pari['BetOn'] == 'none') ? "checked" : "" }}>
+                    <label class="form-check-label" for="team2">Match nul</label>
+                </div>
+            </div>
+            <div class="form-group col-md-3 scoreBet">
+                <label for="inputSum">Score :</label>
+                <input type="number" class="form-control" name="result1" id="scoreTeam1" placeholder="{{ $meeting['team1'] }}" required value="{{ $pari['result1'] }}">
+                <span> - </span>
+                <input type="number" class="form-control" name="result2" id="scoreTeam2" placeholder="{{ $meeting['team2'] }}" required value="{{ $pari['result2'] }}">
+            </div>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+            <label class="form-check-label" for="gridCheck">Accepter les conditions d'utilisations</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Valider</button>
+        <a href="/pari/destroy/{{$pari['id']}}" class="btn btn-primary">Supprimer</a>
+    </form>
+</div>
+
+</body>
+</html>

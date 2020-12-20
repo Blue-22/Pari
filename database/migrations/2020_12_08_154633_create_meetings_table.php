@@ -16,9 +16,9 @@ class CreateMeetingsTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->id('id');
             $table->timestamps();
-            $table->dateTime('start_date', 0);
-            $table->dateTime('end_date', 0);
-            $table->integer('cote');
+            $table->dateTime('meeting_date', 0);
+            $table->integer('cote1');
+            $table->integer('cote2');
             $table->char('team1', '100');
             $table->char('team2', '100');
             $table->integer('result1');

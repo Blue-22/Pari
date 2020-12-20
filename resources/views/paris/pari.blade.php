@@ -18,7 +18,7 @@
 
   <div class="general-details container">
     <h2>{{ $meeting['team1'] }} - {{ $meeting['team2'] }}</h2>
-    <h4><span class="badge badge-success">Date de la rencontre : {{ $meeting['end_date'] }}</span></h4>
+    <h4><span class="badge badge-success">Date de la rencontre : {{ $meeting['meeting_date'] }}</span></h4>
   </div>
 
   <div class="container pari-array">
@@ -29,7 +29,7 @@
           <h4>{{ $meeting['team1'] }}</h4>
         </div>
         <div class="t-body">
-          <h3>Côte : 1,70</h3>
+          <h3>Côte : {{ $meeting['cote1'] }}</h3>
         </div>
       </div>
       <div class="col-6 team2">
@@ -38,7 +38,7 @@
           <h4>{{ $meeting['team2'] }}</h4>
         </div>
         <div class="t-body">
-          <h3>Côte : 4,40</h3>
+          <h3>Côte : {{ $meeting['cote2'] }}</h3>
         </div>
       </div>
     </div>

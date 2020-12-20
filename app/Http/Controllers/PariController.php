@@ -36,11 +36,11 @@ class PariController extends Controller
     {
         $request = request()->validate([
             'BetSum'=>'required',
-            'meetingId'=>'required',
-            'userId'=>'required',
             'BetOn'=>'required',
             'result1'=>'required',
             'result2'=>'required',
+            'userId'=>'required',
+            'meetingId'=>'required',
         ]);
         $pari = Pari::create($request);
 
@@ -67,12 +67,16 @@ class PariController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     * @param  int  $meetingId
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $meetingId)
     {
-        $pari = Meeting::find($id);
-        return view('/pari', compact('pari'));
+        $meeting = Meeting::find($meetingId);
+        $pari = Pari::find($id);
+        $user = auth()->user()->id;
+
+        return view('paris.edit', compact('meeting', 'pari', 'user'));
     }
 
     /**
@@ -84,24 +88,26 @@ class PariController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $request = request()->validate([
             'BetSum'=>'required',
             'BetOn'=>'required',
             'result1'=>'required',
             'result2'=>'required',
+            'userId'=>'required',
+            'meetingId'=>'required',
         ]);
 
         $pari = Pari::find($id);
-        echo($pari);
-        echo($id);
-        $pari->BetSum =  $request->get('BetSum');
+        $pari->BetSum = $request->get('BetSum');
         $pari->BetOn = $request->get('BetOn');
         $pari->result1 = $request->get('result1');
         $pari->result2 = $request->get('result2');
+        $pari->userId = $request->get('userId');
+        $pari->meetingId = $request->get('meetingId');
 
         $pari->save();
 
-        return redirect('/pari')->with('success', 'Pari updated!');
+        return redirect('/')->with('success', 'Pari updated!');
     }
 
     /**
@@ -115,6 +121,6 @@ class PariController extends Controller
         $pari = Pari::find($id);
         $pari->delete();
 
-        return redirect('/pari')->with('success', 'Pari deleted!');
+        return redirect('/')->with('success', 'Pari deleted!');
     }
 }

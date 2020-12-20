@@ -34,9 +34,9 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
         $request = request()->validate([
-            'start_date'=>'required',
-            'end_date'=>'required',
-            'cote'=>'required',
+            'meeting_date'=>'required',
+            'cote1'=>'required',
+            'cote2'=>'required',
             'result1'=>'required',
             'result2'=>'required',
             'team1'=>'required',
@@ -57,9 +57,7 @@ class MeetingController extends Controller
      */
     public function show() // $id
     {
-        $meetings = Meeting::all();
 
-        return view('accueil', compact('meetings'));
     }
 
     /**
@@ -84,9 +82,9 @@ class MeetingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'start_date'=>'required',
-            'end_date'=>'required',
-            'cote'=>'required',
+            'meeting_date'=>'required',
+            'cote1'=>'required',
+            'cote2'=>'required',
             'result1'=>'required',
             'result2'=>'required',
             'team1'=>'required',
@@ -96,9 +94,9 @@ class MeetingController extends Controller
         $meeting = Meeting::find($id);
         echo($meeting);
         echo($id);
-        $meeting->start_date =  $request->get('start_date');
-        $meeting->end_date = $request->get('end_date');
-        $meeting->cote = $request->get('cote');
+        $meeting->meeting_date =  $request->get('meeting_date');
+        $meeting->cote1 = $request->get('cote1');
+        $meeting->cote2 = $request->get('cote2');
         $meeting->result1 = $request->get('result1');
         $meeting->result2 = $request->get('result2');
         $meeting->team1 = $request->get('team1');

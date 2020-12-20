@@ -18,18 +18,18 @@
             <div>
               <form method="post" action="{{ route('meeting.store') }}">
                 @csrf
-                <div class="form-group">
-                  <label for="start_date">Date de début:</label>
-                  <input type="date" class="form-control" name="start_date"/>
-                </div>
-                <div class="form-group">
-                  <label for="end_date">Date de fin:</label>
-                  <input type="date" class="form-control" name="end_date"/>
-                </div>
-                <div class="form-group">
-                  <label for="cote">Cote:</label>
-                  <input type="text" class="form-control" name="cote"/>
-                </div>
+              <div class="form-group">
+                  <label for="meeting_date">Date:</label>
+                  <input type="date" class="form-control" name="meeting_date"/>
+              </div>
+              <div class="form-group">
+                  <label for="cote1">Cote équipe 1:</label>
+                  <input type="text" class="form-control" name="cote1"/>
+              </div>
+              <div class="form-group">
+                  <label for="cote2">Cote équipe 2:</label>
+                  <input type="text" class="form-control" name="cote2"/>
+              </div>
                 <div class="form-group">
                   <label for="result1">Résultat équipe 1:</label>
                   <input type="text" class="form-control" name="result1"/>

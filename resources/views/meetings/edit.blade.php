@@ -15,19 +15,16 @@
         <form method="post" action="/meetings/update/{{$meeting['id']}}">
             @csrf
             <div class="form-group">
-
-                <label for="start_date">Date de début:</label>
-                <input type="text" class="form-control" name="start_date" value={{ $meeting['start_date'] }} />
+                <label for="meeting_date">Date:</label>
+                <input type="date" class="form-control" name="meeting_date" value={{ $meeting['meeting_date'] }} />
             </div>
-
             <div class="form-group">
-                <label for="end_date">Date de fin:</label>
-                <input type="text" class="form-control" name="end_date" value={{ $meeting['end_date'] }} />
+                <label for="cote1">Cote équipe 1:</label>
+                <input type="text" class="form-control" name="cote1" value={{ $meeting['cote1'] }} />
             </div>
-
             <div class="form-group">
-                <label for="cote">Cote:</label>
-                <input type="text" class="form-control" name="cote" value={{ $meeting['cote'] }} />
+                <label for="cote2">Cote équipe 2:</label>
+                <input type="text" class="form-control" name="cote2" value={{ $meeting['cote2'] }} />
             </div>
             <div class="form-group">
                 <label for="result1">Résultat équipe 1:</label>
