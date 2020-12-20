@@ -14,7 +14,7 @@
 </head>
 <body class="antialiased">
 
-  @include('fragments/header')
+{{--  @include('fragments/header')--}}
 
   <div class="general-details container">
     <h2>Nom de la rencontre</h2>
