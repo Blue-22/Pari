@@ -46,7 +46,7 @@ class MeetingController extends Controller
 
         $meeting->save();
 
-        return redirect('/meetings')->with('success', 'Meeting saved!');
+        return redirect('/')->with('success', 'Meeting saved!');
     }
 
     /**
@@ -59,7 +59,7 @@ class MeetingController extends Controller
     {
         $meetings = Meeting::all();
 
-        return view('meetings.show', compact('meetings'));
+        return view('accueil', compact('meetings'));
     }
 
     /**

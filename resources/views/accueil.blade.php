@@ -19,34 +19,15 @@
   <div class="current-bet-container container">
     <h3>Vos Paris en cours :</h3>
     <div class="cards-list">
+      @foreach($meetings as $meeting)
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">> Détails <</a>
+          <h5 class="card-title">{{$meeting['team1']}} - {{$meeting['team2']}}</h5>
+          <p class="card-text">Date de la rencontre : {{$meeting['start_date']}}</p>
+          <a href="/pari/{{$meeting['id']}}" class="card-link">Détails</a>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">> Détails <</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">> Détails <</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">> Détails <</a>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 
@@ -54,34 +35,15 @@
   <div class="bet-list container">
     <h3>Paris disponibles :</h3>
     <div class="cards-list">
+      @foreach($meetings as $meeting)
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">Détails</a>
+          <h5 class="card-title">{{$meeting['team1']}} - {{$meeting['team2']}}</h5>
+          <p class="card-text">Date de la rencontre : {{$meeting['start_date']}}</p>
+          <a href="/pari/{{$meeting['id']}}" class="card-link">Détails</a>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">Détails</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">Détails</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
-          <a href="#" class="card-link">Détails</a>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 

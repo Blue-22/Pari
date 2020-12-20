@@ -13,9 +13,7 @@ use App\Http\Controllers\MeetingController;
 |
 */
 
-Route::get('/', function () {
-    return view('accueil');
-});
+Route::get('/', 'App\Http\Controllers\MeetingController@show')->name('meeting');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -26,7 +24,6 @@ Route::get('/pari', function () {
     return view('pari');
 });
 
-Route::get('/meetings', 'App\Http\Controllers\MeetingController@show')->name('meeting');
 Route::post('/dashboard/store', 'App\Http\Controllers\MeetingController@store')->name('meeting.store');
 Route::get('/meetings/edit/{id}', ['as' => 'meeting.edit', 'uses' => 'App\Http\Controllers\MeetingController@edit']);
 Route::post('/meetings/update/{id}', ['as' => 'meeting.update', 'uses' => 'App\Http\Controllers\MeetingController@update']);
