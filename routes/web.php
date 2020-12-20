@@ -13,9 +13,7 @@ use App\Http\Controllers\MeetingController;
 |
 */
 
-Route::get('/', function () {
-    return view('accueil');
-});
+Route::get('/', 'App\Http\Controllers\MeetingController@show')->name('meeting');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
