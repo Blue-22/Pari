@@ -14,7 +14,7 @@
 </head>
 <body class="antialiased">
 
-  @include('fragments/header')
+{{--  @include('fragments/header')--}}
 
   <div class="current-bet-container container">
     <h3>Vos Paris en cours :</h3>
