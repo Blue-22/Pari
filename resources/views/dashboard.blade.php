@@ -12,7 +12,7 @@
  <div class="col-sm-8 offset-sm-2">
     <h1 class="display-3">Ajouter une rencontre</h1>
   <div>
-      <form method="post" action="{{ route('meeting.store') }}"> <!-- action="{{ route('meeting.store') }}" -->
+      <form method="post" action="{{ route('meeting.store') }}">
           @csrf
           <div class="form-group">
               <label for="start_date">Date de début:</label>
