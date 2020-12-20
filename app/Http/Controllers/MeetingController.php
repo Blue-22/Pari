@@ -44,16 +44,6 @@ class MeetingController extends Controller
         ]);
         $meeting = Meeting::create($request);
 
-
-        // $meeting = new Meeting([
-        //     'start_date' => $request->get('start_date'),
-        //     'end_date' => $request->get('end_date'),
-        //     'cote' => $request->get('cote'),
-        //     'result1' => $request->get('result1'),
-        //     'result2' => $request->get('result2'),
-        //     'team1' => $request->get('team1'),
-        //     'team2' => $request->get('team2')
-        // ]);
         $meeting->save();
 
         return redirect('/meetings')->with('success', 'Meeting saved!');
@@ -106,7 +96,6 @@ class MeetingController extends Controller
         $meeting = Meeting::find($id);
         echo($meeting);
         echo($id);
-        // $meeting = Meeting::where('id', $meeting)->first();
         $meeting->start_date =  $request->get('start_date');
         $meeting->end_date = $request->get('end_date');
         $meeting->cote = $request->get('cote');
