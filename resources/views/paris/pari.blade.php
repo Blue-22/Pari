@@ -17,9 +17,8 @@
   @include('fragments/header')
 
   <div class="general-details container">
-    <h2>Nom de la rencontre</h2>
-    <h4><span class="badge badge-primary">Sport : Sport</span></h4>
-    <h4><span class="badge badge-success">Date de la rencontre : XX/XX/XXX</span></h4>
+    <h2>{{ $meeting['team1'] }} - {{ $meeting['team2'] }}</h2>
+    <h4><span class="badge badge-success">Date de la rencontre : {{ $meeting['end_date'] }}</span></h4>
   </div>
 
   <div class="container pari-array">
@@ -27,7 +26,7 @@
       <div class="col-6 team1">
         <div class="t-header">
           <img src="https://fr.global.nba.com/media/img/teams/00/logos/MEM_logo.png" alt="">
-          <h4>Nom de la team</h4>
+          <h4>{{ $meeting['team1'] }}</h4>
         </div>
         <div class="t-body">
           <h3>Côte : 1,70</h3>
@@ -36,7 +35,7 @@
       <div class="col-6 team2">
         <div class="t-header">
           <img src="https://fr.global.nba.com/media/img/teams/00/logos/MIA_logo.png" alt="">
-          <h4>Nom de la team</h4>
+          <h4>{{ $meeting['team2'] }}</h4>
         </div>
         <div class="t-body">
           <h3>Côte : 4,40</h3>
@@ -44,13 +43,14 @@
       </div>
     </div>
     <div class="row t-footer">
-      <h4>Match nul : 3,75</h4>
-      <button type="button" class="btn btn-primary">Parier</button>
     </div>
   </div>
-
   <div class="container">
-    <form class="bet-form" method="post" action="{{ route('pari.store') }}">
+    <form class="bet-form" method="post" action="/pari/store">
+        {{ csrf_field() }}
+                {{--donne la bonne rencontre TODO:donner la bonne valeur--}}
+        <input type="hidden" name="meetingId" value="{{ $meeting['id'] }}">
+        <input type="hidden" name="userId" value="{{ $user }}">
       <div class="form-row justify-content-around">
         <div class="form-group col-md-3">
           <label for="inputSum">Somme à parier</label>
@@ -59,23 +59,23 @@
         <div class="form-group col-md-4">
           <label style="display:block;">Choix pari :</label>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="BetOn" value="team1" required>
-            <label class="form-check-label" for="team1">Team 1</label>
+            <input class="form-check-input" type="radio" name="BetOn" value="{{ $meeting['team1'] }}" id="1" required>
+            <label class="form-check-label" for="team1">{{ $meeting['team1'] }}</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="BetOn" value="team2" required>
-            <label class="form-check-label" for="team2">Team 2</label>
+            <input class="form-check-input" type="radio" name="BetOn" value="{{ $meeting['team2'] }}" id="2" required>
+            <label class="form-check-label" for="team2">{{ $meeting['team2'] }}</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="BetOn" value="none" required>
+            <input class="form-check-input" type="radio" name="BetOn" value="none" id="3" required>
             <label class="form-check-label" for="team2">Match nul</label>
           </div>
         </div>
         <div class="form-group col-md-3 scoreBet">
           <label for="inputSum">Score :</label>
-          <input type="number" class="form-control" name="result1" id="scoreTeam1" placeholder="Team 1" required>
+          <input type="number" class="form-control" name="result1" id="scoreTeam1" placeholder="{{ $meeting['team1'] }}" required>
           <span> - </span>
-          <input type="number" class="form-control" name="result2" id="scoreTeam2" placeholder="Team 2" required>
+          <input type="number" class="form-control" name="result2" id="scoreTeam2" placeholder="{{ $meeting['team2'] }}" required>
         </div>
       </div>
       <div class="form-check">

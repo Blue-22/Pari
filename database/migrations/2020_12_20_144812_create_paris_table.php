@@ -15,6 +15,14 @@ class CreateParisTable extends Migration
     {
         Schema::create('paris', function (Blueprint $table) {
             $table->id();
+            $table->integer('BetSum');
+            $table->char('BetOn', '100');
+            $table->integer('result1');
+            $table->integer('result2');
+            $table->unsignedBigInteger('userId');
+            $table->unsignedBigInteger('meetingId');
+            $table->foreign('userId')->references('id')->on('users');
+            $table->foreign('meetingId')->references('id')->on('meetings');
             $table->timestamps();
         });
     }

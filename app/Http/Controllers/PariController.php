@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meeting;
 use Illuminate\Http\Request;
 use App\Models\Pari;
 
@@ -33,32 +34,10 @@ class PariController extends Controller
      */
     public function store(Request $request)
     {
-        $pari = new Pari();
-
-        if ($request->BetOn == 'team1'){
-
-            $pari->team1 = 1;
-            $pari->team2 = 0;
-            $pari->none = 0;
-
-        }
-        else if ($request->BetOn == 'team2')   {
-
-            $pari->team1 = 0;
-            $pari->team2 = 1;
-            $pari->none = 0;
-        }
-        else if ($request->BetOn == 'none')   {
-
-            $pari->team1 = 0;
-            $pari->team2 = 0;
-            $pari->none = 1;
-        }
-
-        $pari->save();
-
         $request = request()->validate([
             'BetSum'=>'required',
+            'meetingId'=>'required',
+            'userId'=>'required',
             'BetOn'=>'required',
             'result1'=>'required',
             'result2'=>'required',
@@ -76,11 +55,12 @@ class PariController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show() // $id
+    public function show($id) // $id
     {
-        $paris = Pari::all();
+        $user = auth()->user()->id;
 
-        return view('/', compact('paris'));
+        $meeting = Meeting::find($id);
+        return view('paris.pari', compact('meeting', 'user'));
     }
 
     /**
