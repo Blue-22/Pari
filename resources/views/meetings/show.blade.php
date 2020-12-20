@@ -4,19 +4,20 @@
   <table class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Date de début</th>
-            <th>Date de fin</th>
-            <th>La cote</th>
-            <th>Résultat équipe 1</th>
-            <th>Résultat équipe 2</th>
-            <th>Equipe 1</th>
-            <th>Equipe 2</th>
+            <th scope="col">Id</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">Date de fin</th>
+            <th scope="col">La cote</th>
+            <th scope="col">Résultat équipe 1</th>
+            <th scope="col">Résultat équipe 2</th>
+            <th scope="col">Equipe 1</th>
+            <th scope="col">Equipe 2</th>
         </tr>
     </thead>
     <tbody>
         @foreach($meetings as $meeting)
         <tr>
+        <th scope="row"></th>
             <td>{{$meeting['id']}}</td>
             <td>{{$meeting['start_date']}}</td>
             <td>{{$meeting['end_date']}}</td>

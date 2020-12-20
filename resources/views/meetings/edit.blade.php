@@ -1,4 +1,3 @@
-@section('main')
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Mise à jour de la rencontre</h1>
@@ -13,8 +12,7 @@
         </div>
         <br />
         @endif
-        <form method="post" action="{{ route('meetings.update', $meeting['id']) }}">
-            @method('PATCH')
+        <form method="post" action="/meetings/update/{{$meeting['id']}}">
             @csrf
             <div class="form-group">
 
@@ -51,4 +49,3 @@
         </form>
     </div>
 </div>
-@endsection

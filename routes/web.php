@@ -28,8 +28,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Route::resource('/meetings', 'MeetingController');
 
 Route::get('/meetings', 'App\Http\Controllers\MeetingController@show')->name('meeting');
-// Route::get('/meetings', 'App\Http\Controllers\MeetingController@create')->name('meeting');
+//Route::get('/dashboard', 'App\Http\Controllers\MeetingController@create')->name('meeting');
 
-Route::get('/meetings/{id}', ['as' => 'meeting.edit', 'uses' => 'App\Http\Controllers\MeetingController@edit']);
+Route::post('/dashboard/store', 'App\Http\Controllers\MeetingController@store')->name('meeting.store');
+
+Route::get('/meetings/edit/{id}', ['as' => 'meeting.edit', 'uses' => 'App\Http\Controllers\MeetingController@edit']);
+Route::post('/meetings/update/{id}', ['as' => 'meeting.update', 'uses' => 'App\Http\Controllers\MeetingController@update']);
+
 
 Route::get('/meetings/{id}', ['as' => 'meeting.destroy', 'uses' => 'App\Http\Controllers\MeetingController@destroy']);
