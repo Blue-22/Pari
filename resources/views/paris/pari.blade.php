@@ -50,32 +50,32 @@
   </div>
 
   <div class="container">
-    <form class="bet-form">
+    <form class="bet-form" method="post" action="{{ route('pari.store') }}">
       <div class="form-row justify-content-around">
         <div class="form-group col-md-3">
           <label for="inputSum">Somme à parier</label>
-          <input type="number" class="form-control" id="inputSum" required>
+          <input type="number" class="form-control" name="BetSum" id="inputSum" required>
         </div>
         <div class="form-group col-md-4">
-          <label style="display:block;">Résultat globale : </label>
+          <label style="display:block;">Choix pari :</label>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="resultGlobal" value="team1" required>
+            <input class="form-check-input" type="radio" name="BetOn" value="team1" required>
             <label class="form-check-label" for="team1">Team 1</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="resultGlobal" value="team2" required>
+            <input class="form-check-input" type="radio" name="BetOn" value="team2" required>
             <label class="form-check-label" for="team2">Team 2</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="resultGlobal" value="null" required>
+            <input class="form-check-input" type="radio" name="BetOn" value="none" required>
             <label class="form-check-label" for="team2">Match nul</label>
           </div>
         </div>
         <div class="form-group col-md-3 scoreBet">
           <label for="inputSum">Score :</label>
-          <input type="number" class="form-control" id="scoreTeam1" placeholder="Team 1" required>
+          <input type="number" class="form-control" name="result1" id="scoreTeam1" placeholder="Team 1" required>
           <span> - </span>
-          <input type="number" class="form-control" id="scoreTeam2" placeholder="Team 2" required>
+          <input type="number" class="form-control" name="result2" id="scoreTeam2" placeholder="Team 2" required>
         </div>
       </div>
       <div class="form-check">

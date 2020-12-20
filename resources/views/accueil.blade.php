@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Laravel</title>
+  <title>Parions !</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,8 +21,7 @@
     <div class="cards-list">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Nom Rencontre</h5>
-          <p class="card-text">Description de la rencontre.</p>
+          <h5 class="card-title">Nom Rencontre :</h5>
           <a href="#" class="card-link">> Détails <</a>
         </div>
       </div>
